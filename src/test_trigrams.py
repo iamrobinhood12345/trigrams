@@ -2,7 +2,9 @@
 import pytest
 import string
 
+# Punctuation that should be removed.
 PARAMS_PUNCTUATION = string.punctuation + '\n'
+
 
 def test_open_file():
     """Test open file."""
