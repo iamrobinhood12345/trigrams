@@ -4,6 +4,7 @@ from __future__ import print_function
 import random
 import io
 import sys
+import re
 
 TRI_DICT = {}
 
@@ -16,9 +17,19 @@ def open_file(path):
     return data
 
 
+def format_text(text):
+    """Format string return from file to remove punctuation, newlines, and capital letters."""
+    text = text.replace('--', ' ')  #special case
+    text = text.replace('\n', ' ')
+    text = re.sub('[^ a-zA-Z]', '', text)
+
+    return text
+
+
 def main(path, num_words):
     """This function implements the core trigrams algorithm"""
-    open_file(path)
+    format_text(open_file(path))
+
 
 
 
