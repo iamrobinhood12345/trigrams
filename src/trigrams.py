@@ -23,7 +23,7 @@ def format_text(text):
     text = text.replace('\n', ' ')
     text = re.sub('[^ a-zA-Z]', '', text)
 
-    return text
+    return text.lower()
 
 
 def main(path, num_words):

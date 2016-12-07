@@ -15,11 +15,11 @@ def test_open_file():
 def test_string_format_islowercase():
     """Tests string is lowercase."""
     from trigrams import format_text, open_file
-    assert format_text(type(open_file('Sherlock_Holmes_short.txt'))).islower()
+    assert format_text(open_file('Sherlock_Holmes_short.txt')).islower()
 
 
 @pytest.mark.parametrize("n", PARAMS_PUNCTUATION)
 def test_string_format_punctuation(n):
     """Tests string formatting."""
     from trigrams import format_text, open_file
-    assert n not in format_text(type(open_file('Sherlock_Holmes_short.txt')))
+    assert n not in format_text(open_file('Sherlock_Holmes_short.txt'))
