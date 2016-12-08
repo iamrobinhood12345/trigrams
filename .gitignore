@@ -6,4 +6,4 @@ pip-selfcheck.json
 src/__pycache__
 .cache
 my_submission.txt
-share
+share/man/man1/ipython.1.gz
