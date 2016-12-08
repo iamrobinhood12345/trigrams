@@ -11,6 +11,7 @@ PARAMS_TEST_DICT = {
     "i may": ["i"]
 }
 PARAMS_TEST_STRING = "i wish i may i wish i might".split()
+PARAMS_NUM_WORDS = 6
 
 
 def test_open_file():
@@ -36,4 +37,10 @@ def test_make_tri_dict():
     """Test tri_dict(), verify format of dictionary"""
     from trigrams import make_tri_dict
     assert make_tri_dict(PARAMS_TEST_STRING) == PARAMS_TEST_DICT
+
+
+def test_build_text():
+    """Test build_text to see if it is the correct number of words"""
+    from trigrams import build_text
+    assert len(build_text(PARAMS_TEST_DICT, PARAMS_NUM_WORDS).split) == PARAMS_NUM_WORDS
 
