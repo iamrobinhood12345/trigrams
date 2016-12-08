@@ -8,9 +8,6 @@ import sys
 import re
 
 
-# TRI_DICT = {}
-
-
 def open_file(path):
     """Return a string of the contents of a given file."""
     f = io.open(path)
@@ -35,13 +32,13 @@ def make_tri_dict(word_list):
     tri_dict = {}
     key_pair = ''
     next_word = ''
-    for i in range(len(word_list) - 3):
+    for i in range(len(word_list) - 2):
         key_pair = word_list[i] + ' ' + word_list[i + 1]
         next_word = word_list[i + 2]
         if key_pair in tri_dict:
-            tri_dict[key_pair] += next_word
+            tri_dict[key_pair] += [next_word]
         else:
-            tri_dict[key_pair] = next_word
+            tri_dict[key_pair] = [next_word]
     return tri_dict
 
 
