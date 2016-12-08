@@ -30,8 +30,7 @@ def make_tri_dict(word_list):
     list of words from the text in order.
     """
     tri_dict = {}
-    key_pair = ''
-    next_word = ''
+
     for i in range(len(word_list) - 2):
         key_pair = word_list[i] + ' ' + word_list[i + 1]
         next_word = word_list[i + 2]
