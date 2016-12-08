@@ -4,6 +4,13 @@ import string
 
 # Punctuation that should be removed.
 PARAMS_PUNCTUATION = string.punctuation + '\n'
+PARAMS_TEST_DICT = {
+    "i wish": ["i", "i"],
+    "wish i": ["may", "might"],
+    "may i": ["wish"],
+    "i may": ["i"]
+}
+PARAMS_TEST_STRING = "i wish i may i wish i might".split()
 
 
 def test_open_file():
@@ -23,3 +30,10 @@ def test_string_format_punctuation(n):
     """Tests string formatting."""
     from trigrams import format_text, open_file
     assert n not in format_text(open_file('Sherlock_Holmes_short.txt'))
+
+
+def test_make_tri_dict():
+    """Test tri_dict(), verify format of dictionary"""
+    from trigrams import make_tri_dict
+    assert make_tri_dict(PARAMS_TEST_STRING) == PARAMS_TEST_DICT
+
