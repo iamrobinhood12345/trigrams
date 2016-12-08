@@ -17,7 +17,7 @@ def open_file(path):
 
 
 def format_text(text):
-    """Format string return from file to remove punctuation, 
+    """Format string return from file to remove punctuation,
     newlines, and capital letters."""
     text = text.replace('--', ' ')  #special case
     text = text.replace('\n', ' ')
@@ -42,12 +42,38 @@ def make_tri_dict(word_list):
     return tri_dict
 
 
+def build_text(tri_dict, num_words):
+    """Build the output text using the trigram dictionary, limited by
+    num words.
+    """
+
+    output_string = random.choice(list(tri_dict.keys())).split()
+
+    for i in range(num_words - 2):
+        # print(" ".join(output_string))
+        # print(len(output_string))
+        key = output_string[i] + " " + output_string[i + 1]
+        if key not in tri_dict:
+            key = random.choice(list(tri_dict.keys()))
+
+        new_word = [random.choice(tri_dict[key])]
+        output_string += new_word
+
+    return " ".join(output_string)
+
+
 def main(path, num_words):
-    """This function implements the core trigrams algorithm"""
-    make_tri_dict(format_text(open_file(path)).split())
+    """Implement the core trigrams algorithm."""
+    data = open_file(path)
+    formatted_text = format_text(data)
+    tri_dict = make_tri_dict(formatted_text.split())
+    new_story = build_text(tri_dict, num_words)
+
+    print(new_story)
+    print(len(new_story.split()))
 
 
 if __name__ == '__main__':
     path = sys.argv[1]
-    num_words = sys.argv[2]
+    num_words = int(sys.argv[2])
     main(path, num_words)
