@@ -17,9 +17,8 @@ def open_file(path):
 
 
 def format_text(text):
-    """Format string return from file to remove punctuation,
-    newlines, and capital letters."""
-    text = text.replace('--', ' ')  #special case
+    """Format string returned from file."""
+    text = text.replace('--', ' ')  #Special case.
     text = text.replace('\n', ' ')
     text = re.sub('[^ a-zA-Z]', '', text)
 
@@ -28,7 +27,8 @@ def format_text(text):
 
 def make_tri_dict(word_list):
     """Make key value pairs of pairs of words to a list of words from a
-    list of words from the text in order."""
+    list of words from the text in order.
+    """
     tri_dict = {}
     key_pair = ''
     next_word = ''
@@ -47,11 +47,14 @@ def build_text(tri_dict, num_words):
     num words.
     """
 
+    """Initialize the output string in list form with first two items
+    randomly chosen from keys of tri_dict"""
     output_string = random.choice(list(tri_dict.keys())).split()
 
+    if num_words < 2:
+        return output_string[0]
+
     for i in range(num_words - 2):
-        # print(" ".join(output_string))
-        # print(len(output_string))
         key = output_string[i] + " " + output_string[i + 1]
         if key not in tri_dict:
             key = random.choice(list(tri_dict.keys()))
@@ -70,7 +73,6 @@ def main(path, num_words):
     new_story = build_text(tri_dict, num_words)
 
     print(new_story)
-    print(len(new_story.split()))
 
 
 if __name__ == '__main__':

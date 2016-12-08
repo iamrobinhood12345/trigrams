@@ -11,8 +11,8 @@ PARAMS_TEST_DICT = {
     "i may": ["i"]
 }
 PARAMS_TEST_STRING = "i wish i may i wish i might".split()
-PARAMS_NUM_WORDS = [3, 4, 5, 6]
-
+PARAMS_NUM_WORDS = [3, 4, 5, 6, 10, 100, 1000]
+PARAMS_TEST_TEXT = "Sherlock_Holmes.txt"
 
 def test_open_file():
     """Test open file."""
